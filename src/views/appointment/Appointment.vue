@@ -145,32 +145,32 @@ export default {
   },
   methods: {
     handleTab(i) {
-      if (this.headList.depatment === "") {
-        alert("请选择预约科室");
-        return;
-      }
+      // if (this.headList.depatment === "") {
+      //   alert("请选择预约科室");
+      //   return;
+      // }
       this.headSwitch = true;
       this.paginationSwitch = true;
       if (i === 4) {
-        if (this.headList.date === "") {
-          alert("请选择预约日期");
-          return;
-        }
-        if (this.headList.doctor === "") {
-          alert("请选择预约医生");
-          return;
-        }
-        if (this.headList.times === "") {
-          alert("请选择预约时间");
-          return;
-        }
         this.headSwitch = false;
-        this.paginationSwitch = false;
+        // if (this.headList.date === "") {
+        //   alert("请选择预约日期");
+        //   return;
+        // }
+        // if (this.headList.doctor === "") {
+        //   alert("请选择预约医生");
+        //   return;
+        // }
+        // if (this.headList.times === "") {
+        //   alert("请选择预约时间");
+        //   return;
+        // }
 
-        console.log(this.paginationSwitch);
+        this.paginationSwitch = false;
       }
       if (i === 0) {
         this.totalLength = this.allData.depatment.length;
+        this.headSwitch = false;
       } else if (i === 1) {
         this.totalLength = this.allData.date.length;
       } else if (i === 2) {
@@ -184,6 +184,7 @@ export default {
         if (this.headList[item] !== "") {
           if (item === "depatment") {
             this.boo.depatment = true;
+            this.headSwitch = true;
           } else if (item === "date") {
             this.boo.date = true;
           } else if (item === "doctor") {
@@ -195,6 +196,8 @@ export default {
       });
     },
     getItem(e, index) {
+      this.headSwitch = true;
+
       switch (index) {
         case 0:
           this.headList.depatment = e.value;
@@ -211,8 +214,6 @@ export default {
         default:
           break;
       }
-
-      this.headSwitch = true;
     }
   }
 };
