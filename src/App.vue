@@ -26,11 +26,11 @@ ul {
   height: 450px;
   overflow: hidden;
   li {
-    flex: 0 1 28%;
+    flex: 0 1 23%;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 130px;
+    height: 90px;
     margin: 10px 20px;
     padding: 20px;
     border-radius: 30px;
@@ -38,7 +38,7 @@ ul {
     text-align: center;
     color: #fff;
     background: #18abef;
-    box-sizing: border-box;
+    // box-sizing: border-box; ie不支持
     &.currentColor {
       background: palegreen;
     }
