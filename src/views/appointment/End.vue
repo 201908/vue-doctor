@@ -8,7 +8,7 @@
       <li>预约时间：{{headList.times}}</li>
     </ul>
     <div class="button">
-      <el-button type="primary">确认预约</el-button>
+      <el-button type="primary" @click="success">确认预约</el-button>
     </div>
   </div>
 </template>
@@ -18,6 +18,11 @@ export default {
   name: "end",
   props: {
     headList: Object
+  },
+  methods: {
+    success() {
+      this.$message.success("预约成功");
+    }
   }
 };
 </script>

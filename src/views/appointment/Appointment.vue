@@ -145,26 +145,26 @@ export default {
   },
   methods: {
     handleTab(i) {
-      // if (this.headList.depatment === "") {
-      //   alert("请选择预约科室");
-      //   return;
-      // }
       this.headSwitch = true;
       this.paginationSwitch = true;
       if (i === 4) {
         this.headSwitch = false;
-        // if (this.headList.date === "") {
-        //   alert("请选择预约日期");
-        //   return;
-        // }
-        // if (this.headList.doctor === "") {
-        //   alert("请选择预约医生");
-        //   return;
-        // }
-        // if (this.headList.times === "") {
-        //   alert("请选择预约时间");
-        //   return;
-        // }
+        if (this.headList.depatment === "") {
+          this.$message.warning("请选择预约科室");
+          return;
+        }
+        if (this.headList.date === "") {
+          this.$message.warning("请选择预约日期");
+          return;
+        }
+        if (this.headList.doctor === "") {
+          this.$message.warning("请选择预约医生");
+          return;
+        }
+        if (this.headList.times === "") {
+          this.$message.warning("请选择预约时间");
+          return;
+        }
 
         this.paginationSwitch = false;
       }
