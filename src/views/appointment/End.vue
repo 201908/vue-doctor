@@ -1,6 +1,7 @@
 <template>
   <div class="end">
-    <h3>请确认预约信息</h3>
+    <!-- <h3>请确认预约信息</h3> -->
+    <slot></slot>
     <ul>
       <li>预约科室：{{headList.depatment}}</li>
       <li>预约日期：{{headList.date}}</li>

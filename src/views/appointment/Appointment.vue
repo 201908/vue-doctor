@@ -45,11 +45,21 @@
             <span>{{headList.times}}</span>
           </div>
         </div>
-        <Depatment :list="allData.depatment" v-show="index===0" @click="getItem($event,index)" />
-        <Date :list="allData.date" v-show="index===1" @click="getItem($event,index)" />
-        <Doctor :list="allData.doctor" v-show="index===2" @click="getItem($event,index)" />
-        <Times :list="allData.times" v-show="index===3" @click="getItem($event,index)" />
-        <End v-show="index===4" :headList="headList" />
+        <Depatment :list="allData.depatment" v-show="index===0" @click="getItem($event,index)">
+          <h3 v-show="!headSwitch">请选择要预约的科室！</h3>
+          <!-- <h3 v-slot:other>other</h3>错 -->
+          <!-- <template v-slot:other>
+            <h3>other</h3>
+          </template>-->
+
+          <!-- <template v-slot:other="slotProps">{{slotProps.userName.test}}</template> -->
+        </Depatment>
+        <Depatment :list="allData.date" v-show="index===1" @click="getItem($event,index)" />
+        <Depatment :list="allData.doctor" v-show="index===2" @click="getItem($event,index)" />
+        <Depatment :list="allData.times" v-show="index===3" @click="getItem($event,index)" />
+        <End v-show="index===4" :headList="headList">
+          <h3 v-show="!headSwitch">请确认预约信息</h3>
+        </End>
         <el-pagination
           class="pagination"
           layout="prev, pager, next"
@@ -64,9 +74,9 @@
 
 <script>
 import Depatment from "@/views/appointment/Depatment";
-import Date from "@/views/appointment/Date";
-import Doctor from "@/views/appointment/Doctor";
-import Times from "@/views/appointment/Times";
+// import Date from "@/views/appointment/Date";
+// import Doctor from "@/views/appointment/Doctor";
+// import Times from "@/views/appointment/Times";
 import End from "@/views/appointment/End";
 export default {
   name: "appointment",
@@ -128,9 +138,9 @@ export default {
   },
   components: {
     Depatment,
-    Date,
-    Doctor,
-    Times,
+    // Date,
+    // Doctor,
+    // Times,
     End
   },
   watch: {},
@@ -148,7 +158,6 @@ export default {
       this.headSwitch = true;
       this.paginationSwitch = true;
       if (i === 4) {
-        this.headSwitch = false;
         if (this.headList.depatment === "") {
           this.$message.warning("请选择预约科室");
           return;
@@ -177,6 +186,8 @@ export default {
         this.totalLength = this.allData.doctor.length;
       } else if (i === 3) {
         this.totalLength = this.allData.times.length;
+      } else {
+        this.headSwitch = false;
       }
       this.index = i;
 
@@ -184,7 +195,6 @@ export default {
         if (this.headList[item] !== "") {
           if (item === "depatment") {
             this.boo.depatment = true;
-            this.headSwitch = true;
           } else if (item === "date") {
             this.boo.date = true;
           } else if (item === "doctor") {

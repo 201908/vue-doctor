@@ -1,6 +1,9 @@
 <template>
   <div class="depatment">
-    <h3 v-if="show">请选择要预约的科室！</h3>
+    <slot></slot>
+    <!-- <slot name="other"></slot> -->
+    <!-- 具名+作用域 -->
+    <!-- <slot name="other" :userName="user">{{ user.test }}</slot> -->
     <ul class="ul-global">
       <li
         v-for="(item,index) in list"
@@ -21,13 +24,14 @@ export default {
   data() {
     return {
       num: -1,
-      show: true
+      user: {
+        test: "jack"
+      }
     };
   },
   methods: {
     current(index) {
       this.num = index;
-      this.show = false;
     }
   }
 };
